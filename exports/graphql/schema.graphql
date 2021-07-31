@@ -1,0 +1,1388 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type Abuelo {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titulo: String
+  nombre: String
+  padres(sort: String, limit: Int, start: Int, where: JSON): [Padres]
+}
+
+type AbueloConnection {
+  values: [Abuelo]
+  groupBy: AbueloGroupBy
+  aggregate: AbueloAggregator
+}
+
+type AbueloAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type AbueloGroupBy {
+  id: [AbueloConnectionId]
+  created_at: [AbueloConnectionCreated_at]
+  updated_at: [AbueloConnectionUpdated_at]
+  titulo: [AbueloConnectionTitulo]
+  nombre: [AbueloConnectionNombre]
+}
+
+type AbueloConnectionId {
+  key: ID
+  connection: AbueloConnection
+}
+
+type AbueloConnectionCreated_at {
+  key: DateTime
+  connection: AbueloConnection
+}
+
+type AbueloConnectionUpdated_at {
+  key: DateTime
+  connection: AbueloConnection
+}
+
+type AbueloConnectionTitulo {
+  key: String
+  connection: AbueloConnection
+}
+
+type AbueloConnectionNombre {
+  key: String
+  connection: AbueloConnection
+}
+
+input AbueloInput {
+  titulo: String
+  nombre: String
+  padres: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editAbueloInput {
+  titulo: String
+  nombre: String
+  padres: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createAbueloInput {
+  data: AbueloInput
+}
+
+type createAbueloPayload {
+  abuelo: Abuelo
+}
+
+input updateAbueloInput {
+  where: InputID
+  data: editAbueloInput
+}
+
+type updateAbueloPayload {
+  abuelo: Abuelo
+}
+
+input deleteAbueloInput {
+  where: InputID
+}
+
+type deleteAbueloPayload {
+  abuelo: Abuelo
+}
+
+type Albunes {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titulo: String
+  url: String
+  descripcion: String
+  artista: Artistas
+  canciones(sort: String, limit: Int, start: Int, where: JSON): [Canciones]
+}
+
+type AlbunesConnection {
+  values: [Albunes]
+  groupBy: AlbunesGroupBy
+  aggregate: AlbunesAggregator
+}
+
+type AlbunesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type AlbunesGroupBy {
+  id: [AlbunesConnectionId]
+  created_at: [AlbunesConnectionCreated_at]
+  updated_at: [AlbunesConnectionUpdated_at]
+  titulo: [AlbunesConnectionTitulo]
+  url: [AlbunesConnectionUrl]
+  descripcion: [AlbunesConnectionDescripcion]
+  artista: [AlbunesConnectionArtista]
+}
+
+type AlbunesConnectionId {
+  key: ID
+  connection: AlbunesConnection
+}
+
+type AlbunesConnectionCreated_at {
+  key: DateTime
+  connection: AlbunesConnection
+}
+
+type AlbunesConnectionUpdated_at {
+  key: DateTime
+  connection: AlbunesConnection
+}
+
+type AlbunesConnectionTitulo {
+  key: String
+  connection: AlbunesConnection
+}
+
+type AlbunesConnectionUrl {
+  key: String
+  connection: AlbunesConnection
+}
+
+type AlbunesConnectionDescripcion {
+  key: String
+  connection: AlbunesConnection
+}
+
+type AlbunesConnectionArtista {
+  key: ID
+  connection: AlbunesConnection
+}
+
+input AlbuneInput {
+  titulo: String
+  url: String
+  descripcion: String
+  canciones: [ID]
+  artista: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editAlbuneInput {
+  titulo: String
+  url: String
+  descripcion: String
+  canciones: [ID]
+  artista: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createAlbuneInput {
+  data: AlbuneInput
+}
+
+type createAlbunePayload {
+  albune: Albunes
+}
+
+input updateAlbuneInput {
+  where: InputID
+  data: editAlbuneInput
+}
+
+type updateAlbunePayload {
+  albune: Albunes
+}
+
+input deleteAlbuneInput {
+  where: InputID
+}
+
+type deleteAlbunePayload {
+  albune: Albunes
+}
+
+type Artistas {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titulo: String
+  url: String
+  descripcion: String
+  genero: Generos
+  albunes(sort: String, limit: Int, start: Int, where: JSON): [Albunes]
+}
+
+type ArtistasConnection {
+  values: [Artistas]
+  groupBy: ArtistasGroupBy
+  aggregate: ArtistasAggregator
+}
+
+type ArtistasAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ArtistasGroupBy {
+  id: [ArtistasConnectionId]
+  created_at: [ArtistasConnectionCreated_at]
+  updated_at: [ArtistasConnectionUpdated_at]
+  titulo: [ArtistasConnectionTitulo]
+  url: [ArtistasConnectionUrl]
+  descripcion: [ArtistasConnectionDescripcion]
+  genero: [ArtistasConnectionGenero]
+}
+
+type ArtistasConnectionId {
+  key: ID
+  connection: ArtistasConnection
+}
+
+type ArtistasConnectionCreated_at {
+  key: DateTime
+  connection: ArtistasConnection
+}
+
+type ArtistasConnectionUpdated_at {
+  key: DateTime
+  connection: ArtistasConnection
+}
+
+type ArtistasConnectionTitulo {
+  key: String
+  connection: ArtistasConnection
+}
+
+type ArtistasConnectionUrl {
+  key: String
+  connection: ArtistasConnection
+}
+
+type ArtistasConnectionDescripcion {
+  key: String
+  connection: ArtistasConnection
+}
+
+type ArtistasConnectionGenero {
+  key: ID
+  connection: ArtistasConnection
+}
+
+input ArtistaInput {
+  titulo: String
+  url: String
+  descripcion: String
+  albunes: [ID]
+  genero: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editArtistaInput {
+  titulo: String
+  url: String
+  descripcion: String
+  albunes: [ID]
+  genero: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createArtistaInput {
+  data: ArtistaInput
+}
+
+type createArtistaPayload {
+  artista: Artistas
+}
+
+input updateArtistaInput {
+  where: InputID
+  data: editArtistaInput
+}
+
+type updateArtistaPayload {
+  artista: Artistas
+}
+
+input deleteArtistaInput {
+  where: InputID
+}
+
+type deleteArtistaPayload {
+  artista: Artistas
+}
+
+type Canciones {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titulo: String
+  subtitulo: String
+  numero: Int
+  urlimagen: String
+  urlaudio: String
+  nombrecancion: String
+  album: Albunes
+}
+
+type CancionesConnection {
+  values: [Canciones]
+  groupBy: CancionesGroupBy
+  aggregate: CancionesAggregator
+}
+
+type CancionesAggregator {
+  count: Int
+  totalCount: Int
+  sum: CancionesAggregatorSum
+  avg: CancionesAggregatorAvg
+  min: CancionesAggregatorMin
+  max: CancionesAggregatorMax
+}
+
+type CancionesAggregatorSum {
+  numero: Float
+}
+
+type CancionesAggregatorAvg {
+  numero: Float
+}
+
+type CancionesAggregatorMin {
+  numero: Float
+}
+
+type CancionesAggregatorMax {
+  numero: Float
+}
+
+type CancionesGroupBy {
+  id: [CancionesConnectionId]
+  created_at: [CancionesConnectionCreated_at]
+  updated_at: [CancionesConnectionUpdated_at]
+  titulo: [CancionesConnectionTitulo]
+  subtitulo: [CancionesConnectionSubtitulo]
+  numero: [CancionesConnectionNumero]
+  urlimagen: [CancionesConnectionUrlimagen]
+  urlaudio: [CancionesConnectionUrlaudio]
+  nombrecancion: [CancionesConnectionNombrecancion]
+  album: [CancionesConnectionAlbum]
+}
+
+type CancionesConnectionId {
+  key: ID
+  connection: CancionesConnection
+}
+
+type CancionesConnectionCreated_at {
+  key: DateTime
+  connection: CancionesConnection
+}
+
+type CancionesConnectionUpdated_at {
+  key: DateTime
+  connection: CancionesConnection
+}
+
+type CancionesConnectionTitulo {
+  key: String
+  connection: CancionesConnection
+}
+
+type CancionesConnectionSubtitulo {
+  key: String
+  connection: CancionesConnection
+}
+
+type CancionesConnectionNumero {
+  key: Int
+  connection: CancionesConnection
+}
+
+type CancionesConnectionUrlimagen {
+  key: String
+  connection: CancionesConnection
+}
+
+type CancionesConnectionUrlaudio {
+  key: String
+  connection: CancionesConnection
+}
+
+type CancionesConnectionNombrecancion {
+  key: String
+  connection: CancionesConnection
+}
+
+type CancionesConnectionAlbum {
+  key: ID
+  connection: CancionesConnection
+}
+
+input CancioneInput {
+  titulo: String
+  subtitulo: String
+  numero: Int
+  urlimagen: String
+  urlaudio: String
+  nombrecancion: String
+  album: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editCancioneInput {
+  titulo: String
+  subtitulo: String
+  numero: Int
+  urlimagen: String
+  urlaudio: String
+  nombrecancion: String
+  album: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createCancioneInput {
+  data: CancioneInput
+}
+
+type createCancionePayload {
+  cancione: Canciones
+}
+
+input updateCancioneInput {
+  where: InputID
+  data: editCancioneInput
+}
+
+type updateCancionePayload {
+  cancione: Canciones
+}
+
+input deleteCancioneInput {
+  where: InputID
+}
+
+type deleteCancionePayload {
+  cancione: Canciones
+}
+
+type Generos {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  artistas(sort: String, limit: Int, start: Int, where: JSON): [Artistas]
+}
+
+type GenerosConnection {
+  values: [Generos]
+  groupBy: GenerosGroupBy
+  aggregate: GenerosAggregator
+}
+
+type GenerosAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type GenerosGroupBy {
+  id: [GenerosConnectionId]
+  created_at: [GenerosConnectionCreated_at]
+  updated_at: [GenerosConnectionUpdated_at]
+  title: [GenerosConnectionTitle]
+}
+
+type GenerosConnectionId {
+  key: ID
+  connection: GenerosConnection
+}
+
+type GenerosConnectionCreated_at {
+  key: DateTime
+  connection: GenerosConnection
+}
+
+type GenerosConnectionUpdated_at {
+  key: DateTime
+  connection: GenerosConnection
+}
+
+type GenerosConnectionTitle {
+  key: String
+  connection: GenerosConnection
+}
+
+input GeneroInput {
+  title: String
+  artistas: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editGeneroInput {
+  title: String
+  artistas: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createGeneroInput {
+  data: GeneroInput
+}
+
+type createGeneroPayload {
+  genero: Generos
+}
+
+input updateGeneroInput {
+  where: InputID
+  data: editGeneroInput
+}
+
+type updateGeneroPayload {
+  genero: Generos
+}
+
+input deleteGeneroInput {
+  where: InputID
+}
+
+type deleteGeneroPayload {
+  genero: Generos
+}
+
+type Hijos {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titulo: String
+  nombre: String
+}
+
+type HijosConnection {
+  values: [Hijos]
+  groupBy: HijosGroupBy
+  aggregate: HijosAggregator
+}
+
+type HijosAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type HijosGroupBy {
+  id: [HijosConnectionId]
+  created_at: [HijosConnectionCreated_at]
+  updated_at: [HijosConnectionUpdated_at]
+  titulo: [HijosConnectionTitulo]
+  nombre: [HijosConnectionNombre]
+}
+
+type HijosConnectionId {
+  key: ID
+  connection: HijosConnection
+}
+
+type HijosConnectionCreated_at {
+  key: DateTime
+  connection: HijosConnection
+}
+
+type HijosConnectionUpdated_at {
+  key: DateTime
+  connection: HijosConnection
+}
+
+type HijosConnectionTitulo {
+  key: String
+  connection: HijosConnection
+}
+
+type HijosConnectionNombre {
+  key: String
+  connection: HijosConnection
+}
+
+input HijoInput {
+  titulo: String
+  nombre: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editHijoInput {
+  titulo: String
+  nombre: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createHijoInput {
+  data: HijoInput
+}
+
+type createHijoPayload {
+  hijo: Hijos
+}
+
+input updateHijoInput {
+  where: InputID
+  data: editHijoInput
+}
+
+type updateHijoPayload {
+  hijo: Hijos
+}
+
+input deleteHijoInput {
+  where: InputID
+}
+
+type deleteHijoPayload {
+  hijo: Hijos
+}
+
+type Padres {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titulo: String
+  nombre: String
+  hijos(sort: String, limit: Int, start: Int, where: JSON): [Hijos]
+}
+
+type PadresConnection {
+  values: [Padres]
+  groupBy: PadresGroupBy
+  aggregate: PadresAggregator
+}
+
+type PadresAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PadresGroupBy {
+  id: [PadresConnectionId]
+  created_at: [PadresConnectionCreated_at]
+  updated_at: [PadresConnectionUpdated_at]
+  titulo: [PadresConnectionTitulo]
+  nombre: [PadresConnectionNombre]
+}
+
+type PadresConnectionId {
+  key: ID
+  connection: PadresConnection
+}
+
+type PadresConnectionCreated_at {
+  key: DateTime
+  connection: PadresConnection
+}
+
+type PadresConnectionUpdated_at {
+  key: DateTime
+  connection: PadresConnection
+}
+
+type PadresConnectionTitulo {
+  key: String
+  connection: PadresConnection
+}
+
+type PadresConnectionNombre {
+  key: String
+  connection: PadresConnection
+}
+
+input PadreInput {
+  titulo: String
+  nombre: String
+  hijos: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editPadreInput {
+  titulo: String
+  nombre: String
+  hijos: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createPadreInput {
+  data: PadreInput
+}
+
+type createPadrePayload {
+  padre: Padres
+}
+
+input updatePadreInput {
+  where: InputID
+  data: editPadreInput
+}
+
+type updatePadrePayload {
+  padre: Padres
+}
+
+input deletePadreInput {
+  where: InputID
+}
+
+type deletePadrePayload {
+  padre: Padres
+}
+
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Abuelo | AbueloConnection | AbueloAggregator | AbueloGroupBy | AbueloConnectionId | AbueloConnectionCreated_at | AbueloConnectionUpdated_at | AbueloConnectionTitulo | AbueloConnectionNombre | createAbueloPayload | updateAbueloPayload | deleteAbueloPayload | Albunes | AlbunesConnection | AlbunesAggregator | AlbunesGroupBy | AlbunesConnectionId | AlbunesConnectionCreated_at | AlbunesConnectionUpdated_at | AlbunesConnectionTitulo | AlbunesConnectionUrl | AlbunesConnectionDescripcion | AlbunesConnectionArtista | createAlbunePayload | updateAlbunePayload | deleteAlbunePayload | Artistas | ArtistasConnection | ArtistasAggregator | ArtistasGroupBy | ArtistasConnectionId | ArtistasConnectionCreated_at | ArtistasConnectionUpdated_at | ArtistasConnectionTitulo | ArtistasConnectionUrl | ArtistasConnectionDescripcion | ArtistasConnectionGenero | createArtistaPayload | updateArtistaPayload | deleteArtistaPayload | Canciones | CancionesConnection | CancionesAggregator | CancionesAggregatorSum | CancionesAggregatorAvg | CancionesAggregatorMin | CancionesAggregatorMax | CancionesGroupBy | CancionesConnectionId | CancionesConnectionCreated_at | CancionesConnectionUpdated_at | CancionesConnectionTitulo | CancionesConnectionSubtitulo | CancionesConnectionNumero | CancionesConnectionUrlimagen | CancionesConnectionUrlaudio | CancionesConnectionNombrecancion | CancionesConnectionAlbum | createCancionePayload | updateCancionePayload | deleteCancionePayload | Generos | GenerosConnection | GenerosAggregator | GenerosGroupBy | GenerosConnectionId | GenerosConnectionCreated_at | GenerosConnectionUpdated_at | GenerosConnectionTitle | createGeneroPayload | updateGeneroPayload | deleteGeneroPayload | Hijos | HijosConnection | HijosAggregator | HijosGroupBy | HijosConnectionId | HijosConnectionCreated_at | HijosConnectionUpdated_at | HijosConnectionTitulo | HijosConnectionNombre | createHijoPayload | updateHijoPayload | deleteHijoPayload | Padres | PadresConnection | PadresAggregator | PadresGroupBy | PadresConnectionId | PadresConnectionCreated_at | PadresConnectionUpdated_at | PadresConnectionTitulo | PadresConnectionNombre | createPadrePayload | updatePadrePayload | deletePadrePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  abuelo(id: ID!, publicationState: PublicationState): Abuelo
+  abuelos(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Abuelo]
+  abuelosConnection(sort: String, limit: Int, start: Int, where: JSON): AbueloConnection
+  albune(id: ID!, publicationState: PublicationState): Albunes
+  albunes(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Albunes]
+  albunesConnection(sort: String, limit: Int, start: Int, where: JSON): AlbunesConnection
+  artista(id: ID!, publicationState: PublicationState): Artistas
+  artistas(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Artistas]
+  artistasConnection(sort: String, limit: Int, start: Int, where: JSON): ArtistasConnection
+  cancione(id: ID!, publicationState: PublicationState): Canciones
+  canciones(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Canciones]
+  cancionesConnection(sort: String, limit: Int, start: Int, where: JSON): CancionesConnection
+  genero(id: ID!, publicationState: PublicationState): Generos
+  generos(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Generos]
+  generosConnection(sort: String, limit: Int, start: Int, where: JSON): GenerosConnection
+  hijo(id: ID!, publicationState: PublicationState): Hijos
+  hijos(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Hijos]
+  hijosConnection(sort: String, limit: Int, start: Int, where: JSON): HijosConnection
+  padre(id: ID!, publicationState: PublicationState): Padres
+  padres(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Padres]
+  padresConnection(sort: String, limit: Int, start: Int, where: JSON): PadresConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createAbuelo(input: createAbueloInput): createAbueloPayload
+  updateAbuelo(input: updateAbueloInput): updateAbueloPayload
+  deleteAbuelo(input: deleteAbueloInput): deleteAbueloPayload
+  createAlbune(input: createAlbuneInput): createAlbunePayload
+  updateAlbune(input: updateAlbuneInput): updateAlbunePayload
+  deleteAlbune(input: deleteAlbuneInput): deleteAlbunePayload
+  createArtista(input: createArtistaInput): createArtistaPayload
+  updateArtista(input: updateArtistaInput): updateArtistaPayload
+  deleteArtista(input: deleteArtistaInput): deleteArtistaPayload
+  createCancione(input: createCancioneInput): createCancionePayload
+  updateCancione(input: updateCancioneInput): updateCancionePayload
+  deleteCancione(input: deleteCancioneInput): deleteCancionePayload
+  createGenero(input: createGeneroInput): createGeneroPayload
+  updateGenero(input: updateGeneroInput): updateGeneroPayload
+  deleteGenero(input: deleteGeneroInput): deleteGeneroPayload
+  createHijo(input: createHijoInput): createHijoPayload
+  updateHijo(input: updateHijoInput): updateHijoPayload
+  deleteHijo(input: deleteHijoInput): deleteHijoPayload
+  createPadre(input: createPadreInput): createPadrePayload
+  updatePadre(input: updatePadreInput): updatePadrePayload
+  deletePadre(input: deletePadreInput): deletePadrePayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

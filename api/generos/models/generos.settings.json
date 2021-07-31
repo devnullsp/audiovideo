@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "generos",
+  "info": {
+    "name": "generos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "artistas": {
+      "via": "genero",
+      "collection": "artistas"
+    }
+  }
+}

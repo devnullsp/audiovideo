@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "canciones",
+  "info": {
+    "name": "canciones",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "subtitulo": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "integer"
+    },
+    "urlimagen": {
+      "type": "string"
+    },
+    "urlaudio": {
+      "type": "string"
+    },
+    "nombrecancion": {
+      "type": "string"
+    },
+    "album": {
+      "via": "canciones",
+      "model": "albunes"
+    }
+  }
+}

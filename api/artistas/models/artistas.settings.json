@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artistas",
+  "info": {
+    "name": "artistas",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "string"
+    },
+    "albunes": {
+      "via": "artista",
+      "model": "albunes",
+      "collection": "albunes"
+    },
+    "genero": {
+      "via": "artistas",
+      "model": "generos"
+    }
+  }
+}

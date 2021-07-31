@@ -1,0 +1,52 @@
+@HOST = http://localhost:1337
+
+# @name login
+POST {{HOST}}/auth/local
+Content-Type: application/json
+
+{
+  "identifier": "usuario1",
+  "password": "usuario1"
+}
+
+###
+GET {{HOST}}/users/me
+Authorization: Bearer {{login.response.body.jwt}}
+
+###
+POST {{HOST}}/generos
+Authorization: Bearer {{login.response.body.jwt}}
+Content-Type: application/json
+
+{
+  "title": "** genero ññññ áéíó ú"
+}
+
+###
+GET {{HOST}}/generos/6
+Authorization: Bearer {{login.response.body.jwt}}
+
+###
+GET {{HOST}}/artistas
+Authorization: Bearer {{login.response.body.jwt}}
+Content-Type: application/json
+
+
+###
+GET {{HOST}}/albunes/1
+Authorization: Bearer {{login.response.body.jwt}}
+
+
+###
+GET {{HOST}}/canciones/1
+Authorization: Bearer {{login.response.body.jwt}}
+
+
+###
+POST {{HOST}}/graphql
+Authorization: Bearer {{login.response.body.jwt}}
+Content-Type: application/json
+
+{ "query": "{ generos {title autores {title}} }" }
+
+

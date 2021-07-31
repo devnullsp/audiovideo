@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hijos",
+  "info": {
+    "name": "hijos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "nombre": {
+      "type": "string"
+    }
+  }
+}

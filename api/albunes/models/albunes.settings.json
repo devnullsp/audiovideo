@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "albunes",
+  "info": {
+    "name": "albunes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "string"
+    },
+    "canciones": {
+      "via": "album",
+      "collection": "canciones"
+    },
+    "artista": {
+      "via": "albunes",
+      "model": "artistas"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/abuelos",
+      "handler": "abuelo.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/abuelos/count",
+      "handler": "abuelo.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/abuelos/:id",
+      "handler": "abuelo.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/abuelos",
+      "handler": "abuelo.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/abuelos/:id",
+      "handler": "abuelo.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/abuelos/:id",
+      "handler": "abuelo.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
